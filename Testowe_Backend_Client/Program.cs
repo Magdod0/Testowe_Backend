@@ -73,6 +73,7 @@ while (true)
                 break;
             }
             // 
+            Console.WriteLine("\nStarting Exchange!");
             timer.StartTimer();
             Console.WriteLine("\nWrite 3 and Enter to stop checking the server!");
             break;
@@ -83,6 +84,7 @@ while (true)
                 break;
             }
             timer.StopTimer();
+            Console.WriteLine("\nExchange stopped!");
             Console.WriteLine(menuStringBuilder.ToString());
             break;
         case "4":
