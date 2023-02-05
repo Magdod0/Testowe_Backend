@@ -9,7 +9,7 @@ using Testowe_Backend_Client.GitInfo;
 ITimer? timer= default(ITimer);
 
 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-string token = ConfigurationManager.ConnectionStrings["tokenRead"].ConnectionString;
+string token = ConfigurationManager.AppSettings["tokenRead"].ToString(); ;
 
 if (args.Length >= 2)
 {
