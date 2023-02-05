@@ -11,6 +11,7 @@ namespace Testowe_Backend_Client.VariousTimers
     public class SimpleTimer : ITimer
     {
         System.Timers.Timer _timer;
+        // Setting up the exchange configurations
         IExchangeBuilder _exchangeBuilder;
         public SimpleTimer(IExchangeBuilder exchangeBuilder)
         {
@@ -22,6 +23,9 @@ namespace Testowe_Backend_Client.VariousTimers
             _exchangeBuilder = exchangeBuilder;
 
         }
+        /// <summary>
+        /// Results of exchange
+        /// </summary>
         private void PrintServerExchangeMessage()
         {
             try
@@ -38,6 +42,7 @@ namespace Testowe_Backend_Client.VariousTimers
                 Console.WriteLine("\nError happened:\n"+ex.Message);
             }
         }
+        // Make the exchange and start 15 seconds Timer
         public void StartTimer()
         {
             // Fire the first time, otherwise it's 15 seconds wait.

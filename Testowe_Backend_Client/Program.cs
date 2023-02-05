@@ -3,13 +3,15 @@ using System.Configuration;
 using System.Text;
 using Testowe_Backend_Client.Wrappers;
 using Testowe_Backend_Client.VariousTimers;
+using Testowe_Backend_Client.GitInfo;
 
 //Timer for 15 seconds repeated calling of the excahnge with server
 ITimer? timer= default(ITimer);
 
 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+string token = ConfigurationManager.ConnectionStrings["token"].ConnectionString;
 
-if(args.Length >= 2)
+if (args.Length >= 2)
 {
     timer = new SimpleWrapper(args[0], args[1], connectionString)
         .GetTimer();
@@ -21,8 +23,25 @@ if(args.Length >= 2)
     return;
 }
 
+string WelcomeString = string.Empty;
+
+try
+{
+    GitHubAPI gitHubAPI = new GitHubAPI(token);
+    var message = gitHubAPI.GetGitHubRepositoryAsync("Magdod0", "Testowe_Backend").Result;
+    WelcomeString = message.ToString();
+}
+catch (Exception ex)
+{
+
+}
+
+if(string.IsNullOrEmpty(WelcomeString))
+{
+    WelcomeString = "Welcome to EncryptMessage App!";
+}
+
 var menuStringBuilder = new StringBuilder();
-string WelcomeString = "Welcome to EncryptMessage App!";
 menuStringBuilder
     .AppendLine("\nSelect menu option:")
     .AppendLine("1) Write the new message and the key to Encrypt.")
