@@ -1,5 +1,5 @@
 ﻿
-namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Exchanges
+namespace Testowe_Backend_Client.Common.ExchangeBuilders.Exchanges
 {
     public interface IExchange
     {

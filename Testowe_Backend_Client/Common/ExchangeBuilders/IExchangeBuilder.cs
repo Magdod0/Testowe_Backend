@@ -1,8 +1,8 @@
-﻿using Testowe_Backend_Client.VariousTimers.ExchangeBuilders.DbManager;
-using Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Encryptor;
-using Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Exchanges;
+﻿using Testowe_Backend_Client.Common.ExchangeBuilders.DbManager;
+using Testowe_Backend_Client.Common.ExchangeBuilders.Encryptor;
+using Testowe_Backend_Client.Common.ExchangeBuilders.Exchanges;
 
-namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders
+namespace Testowe_Backend_Client.Common.ExchangeBuilders
 {
     public interface IExchangeBuilder
     {

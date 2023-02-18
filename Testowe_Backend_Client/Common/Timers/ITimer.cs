@@ -1,6 +1,6 @@
-﻿using Testowe_Backend_Client.VariousTimers.ExchangeBuilders;
+﻿using Testowe_Backend_Client.Common.ExchangeBuilders;
 
-namespace Testowe_Backend_Client.VariousTimers
+namespace Testowe_Backend_Client.Common.Timers
 {
     public interface ITimer
     {

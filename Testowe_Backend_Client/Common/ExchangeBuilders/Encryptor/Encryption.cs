@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Encryptor
+namespace Testowe_Backend_Client.Common.ExchangeBuilders.Encryptor
 {
     public class Encryption : IEncryption
     {

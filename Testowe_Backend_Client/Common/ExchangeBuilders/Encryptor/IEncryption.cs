@@ -1,4 +1,4 @@
-﻿namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Encryptor
+﻿namespace Testowe_Backend_Client.Common.ExchangeBuilders.Encryptor
 {
     public interface IEncryption
     {

@@ -1,4 +1,4 @@
-﻿using Testowe_Backend_Client.VariousTimers;
+﻿using Testowe_Backend_Client.Common.Timers;
 
 namespace Testowe_Backend_Client.Wrappers
 {

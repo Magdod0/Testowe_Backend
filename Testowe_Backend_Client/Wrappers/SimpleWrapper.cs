@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Testowe_Backend_Client.VariousTimers.ExchangeBuilders;
-using Testowe_Backend_Client.VariousTimers;
+using Testowe_Backend_Client.Common.ExchangeBuilders;
+using Testowe_Backend_Client.Common;
+using Testowe_Backend_Client.Common.Timers;
 
 namespace Testowe_Backend_Client.Wrappers
 {
@@ -25,7 +26,8 @@ namespace Testowe_Backend_Client.Wrappers
         }
         public ITimer GetTimer()
         {
-            return new SimpleTimer(new MessageExchangeBuilder(message, key, connectionString));
+            //return new SimpleTimer(new MessageExchangeBuilder(message, key, connectionString));
+            throw new NotImplementedException();
         }
     }
 }

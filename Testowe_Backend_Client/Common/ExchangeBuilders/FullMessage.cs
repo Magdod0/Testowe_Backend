@@ -1,5 +1,5 @@
 
-namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders
+namespace Testowe_Backend_Client.Common.ExchangeBuilders
 {
     public record class FullMessage
     {

@@ -1,4 +1,4 @@
-﻿namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Connections
+﻿namespace Testowe_Backend_Client.Common.ExchangeBuilders.Connections
 {
     public interface ICreate:IConnection
     {

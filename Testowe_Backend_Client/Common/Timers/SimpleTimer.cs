@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Timers;
-using Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Exchanges;
-using Testowe_Backend_Client.VariousTimers.ExchangeBuilders;
+using Testowe_Backend_Client.Common.ExchangeBuilders.Exchanges;
+using Testowe_Backend_Client.Common.ExchangeBuilders;
 
-namespace Testowe_Backend_Client.VariousTimers
+namespace Testowe_Backend_Client.Common.Timers
 {
     public class SimpleTimer : ITimer
     {
         System.Timers.Timer _timer;
         // Setting up the exchange configurations
         IExchangeBuilder _exchangeBuilder;
+
+
         public SimpleTimer(IExchangeBuilder exchangeBuilder)
         {
             _timer = new System.Timers.Timer(15000);
             _timer.Elapsed += (sender, e) =>
             {
-              PrintServerExchangeMessage();
+                PrintServerExchangeMessage();
             };
             _exchangeBuilder = exchangeBuilder;
+
+        }
+        public SimpleTimer()
+        {
 
         }
         /// <summary>
@@ -37,9 +43,9 @@ namespace Testowe_Backend_Client.VariousTimers
 
                 Console.WriteLine(message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("\nError happened:\n"+ex.Message);
+                Console.WriteLine("\nError happened:\n" + ex.Message);
             }
         }
         // Make the exchange and start 15 seconds Timer

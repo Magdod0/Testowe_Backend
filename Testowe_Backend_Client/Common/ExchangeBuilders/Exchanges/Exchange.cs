@@ -3,7 +3,7 @@ using Grpc.Net.Client;
 using System.Threading;
 using Testowe_GrpcService;
 
-namespace Testowe_Backend_Client.VariousTimers.ExchangeBuilders.Exchanges
+namespace Testowe_Backend_Client.Common.ExchangeBuilders.Exchanges
 {
     public class Exchange : IExchange
     {
