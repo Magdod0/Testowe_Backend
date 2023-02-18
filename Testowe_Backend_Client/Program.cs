@@ -7,10 +7,12 @@ using Testowe_Backend_Client.Common.Timers;
 using System.Drawing.Text;
 using Testowe_Backend_Client.Common;
 using Testowe_Backend_Client.Common.ExchangeBuilders;
+using Microsoft.Identity.Client;
 
 var settings = GetInfo();
-var builder = new MessageExchangeBuilder(settings);
-var timer = new SimpleTimer(builder);
+var builder = GetBuilder(settings);
+var timer = GetTimer(builder);
+
 
 while (true)
 {
@@ -24,7 +26,7 @@ while (true)
             // 
             Console.WriteLine("\nStarting Exchange!");
             timer.StartTimer();
-            Console.WriteLine("\nWrite 3 and Enter to stop checking the server!");
+            Console.WriteLine("\nWrite 2 and Enter to stop checking the server!");
             break;
         case "2":
             timer.StopTimer();
@@ -35,6 +37,8 @@ while (true)
         default: Console.WriteLine("\nThat's not a console option, please select from list! Press Escape if you want to Exit!"); break;
     }
 }
+
+
 //Like ReadLine but with Escape option
 static (string Text, bool IsEscaped) readLineWithCancel()
 {
@@ -62,7 +66,22 @@ UserSettings GetInfo()
     var host = ConfigurationManager.AppSettings["HostAddress"].ToString();
     return new UserSettings(host, message, key, connectionString);
 }
-
+IExchangeBuilder GetBuilder(UserSettings settings)
+{
+    var builders = new IExchangeBuilder[]
+    {
+        new MessageExchangeBuilder(settings)
+    };
+    return QuestionManager.Choose(builders, e => e.GetType().Name, "Choose builder:");
+}
+ITimer GetTimer(IExchangeBuilder builder)
+{
+    var builders = new ITimer[]
+    {
+        new SimpleTimer(builder)
+    };
+    return QuestionManager.Choose(builders, e => e.GetType().Name, "Choose timer:");
+}
 
 
 

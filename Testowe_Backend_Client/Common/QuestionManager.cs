@@ -46,6 +46,9 @@ namespace Testowe_Backend_Client.Common
                 throw new ArgumentOutOfRangeException(nameof(results));
             }
 
+            if (arrayResult.Length == 1)
+                return arrayResult[0];
+
             int selectedIndex = -1;
             do
             {
