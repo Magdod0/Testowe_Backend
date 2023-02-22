@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using CommonResources;
+using System.Security.Cryptography;
 using System.Text;
 using Testowe_GRPC.Services;
 
@@ -11,7 +12,7 @@ namespace Testowe_GrpcService.Services
                     0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
                     0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16
                 };
-        public async Task<Response> Decrypt(string message, string key)
+        public async Task<PostMessage> Decrypt(string message, string key)
         {
             byte[] encrypted = Convert.FromBase64String(message);
 
@@ -23,11 +24,7 @@ namespace Testowe_GrpcService.Services
             using MemoryStream output = new();
             cryptoStream.CopyTo(output);
 
-            return await Task.FromResult(new Response
-            {
-                Message = Encoding.Unicode.GetString(output.ToArray()),
-                Status = "I'm teapot"
-            });
+            return await Task.FromResult(new PostMessage() { Message = Encoding.Unicode.GetString(output.ToArray()), Key = key });
         }
         private byte[] DeriveKeyFromPassword(string password)
         {

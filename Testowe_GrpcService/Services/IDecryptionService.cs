@@ -1,7 +1,9 @@
-﻿namespace Testowe_GRPC.Services
+﻿using CommonResources;
+
+namespace Testowe_GRPC.Services
 {
     public interface IDecryptionService
     {
-        public Task<Testowe_GrpcService.Response> Decrypt(string message, string key);
+        public Task<PostMessage> Decrypt(string message, string key);
     }
 }
