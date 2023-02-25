@@ -61,3 +61,20 @@ using (MessageDbContext dbcontext = new MessageDbContext())
     dbcontext.Database.Migrate();
 }
 app.Run();
+
+//bool IsSingleInstance()
+//{
+//    Mutex m = new Mutex(false, AppDomain.CurrentDomain.FriendlyName);
+
+//    GC.KeepAlive(m);
+
+//    try
+//    {
+//        return m.WaitOne(0, false);
+//    }
+//    catch(AbandonedMutexException)
+//    {
+//        m.ReleaseMutex();
+//        return m.WaitOne(0,false);
+//    }
+//}
