@@ -7,7 +7,7 @@ namespace Testowe_Backend_Client.Common.ExchangeBuilders.Exchanges
         /// Send object with key and Id to the server
         /// </summary>
         /// <returns>record class object with key, status and message</returns>
-        public FullMessage ServerExchange();
+        public Task<FullMessage> ServerExchange();
 
     }
 }

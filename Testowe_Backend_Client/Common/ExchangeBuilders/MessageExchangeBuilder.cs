@@ -7,10 +7,12 @@ namespace Testowe_Backend_Client.Common.ExchangeBuilders
 {
     public class MessageExchangeBuilder : BaseExecution, IExchangeBuilder
     {
-        private UserSettings userSettings;
+        UserSettings userSetting;
         public MessageExchangeBuilder(UserSettings settings)
+        ICreate connection;
+        public MessageExchangeBuilder(string message, string key, string connectionString)
         {
-            userSettings = settings;
+            userSetting = settings;
         }
 
         //public override string Name => nameof(MessageExchangeBuilder);
@@ -33,15 +35,14 @@ namespace Testowe_Backend_Client.Common.ExchangeBuilders
                 var sqlManager = GetProvider();
 
                 // Encrypting message with key
-                var encryptedMessage = encryptor.Encrypt(userSettings.Message, userSettings.Key);
+                var encryptedMessage = encryptor.Encrypt(userSetting.Message, userSetting.Key);
                 // Converting from bytes to string
                 string encrypted = Convert.ToBase64String(encryptedMessage);
                 // Inserting encrypted message to database and getting ID of the item in return
                 var id = sqlManager.Create(encrypted);
 
                 // Creating new Exchange with Service
-                return new Exchange(userSettings.Key, id, encrypted);
-
+                return new Exchange(userSetting.DefaultServiceListenAddress, userSetting.DefaultPort, userSetting.Key, id, encrypted);
             }
             catch(Exception ex)
             {
@@ -51,21 +52,26 @@ namespace Testowe_Backend_Client.Common.ExchangeBuilders
 
         public IEncryption CreateEncryption()
         {
-            var encryptions = new IEncryption[]
+            var Encryptors = new IEncryption[]
             {
-                new Encryption()
+                 new Encryption()
             };
-            return QuestionManager.Choose(encryptions, e => e.GetType().Name, "Choose Encryptor:");
+            return QuestionManager.Choose(Encryptors, e => e.GetType().Name, "Choose Encryptor:");
         }
-
 
         public ICreateMessage GetProvider()
         {
+            var conn = userSetting.ConnectionString;
+            var tableManagers = new ICreate[]
+            {
+                new MessageConnection(conn)
+            };
+            var currentTableConnection = QuestionManager.Choose(tableManagers, e => e.GetType().Name, header: "Choose Table:");
             var providers = new ICreateMessage[]
             {
-                new SQLMessageManager(new MessageConnection(userSettings.ConnectionString))
+                new SQLMessageManager(currentTableConnection)
             };
-            return QuestionManager.Choose(providers, e=> e.GetType().Name, "Choose Provider:");
+            return QuestionManager.Choose(providers, e => e.GetType().Name, header: "Choose Provider:"); ;
         }
 
 

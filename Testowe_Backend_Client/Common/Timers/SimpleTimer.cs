@@ -35,6 +35,7 @@ namespace Testowe_Backend_Client.Common.Timers
                 var message = _exchangeBuilder
                     .Build()
                     .ServerExchange()
+                    .Result
                     .ToString();
 
                 Console.WriteLine(message);

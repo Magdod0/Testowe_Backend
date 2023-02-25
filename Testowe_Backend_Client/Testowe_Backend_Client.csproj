@@ -29,6 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CommonResources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="..\Testowe_GrpcService\Protos\protoBufferFile.proto" GrpcServices="Client">
       <Link>Protos\protoBufferFile.proto</Link>
     </Protobuf>
