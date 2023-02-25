@@ -25,10 +25,6 @@ namespace Testowe_Backend_Client.Common.Timers
             _exchangeBuilder = exchangeBuilder;
 
         }
-        public SimpleTimer()
-        {
-
-        }
         /// <summary>
         /// Results of exchange
         /// </summary>

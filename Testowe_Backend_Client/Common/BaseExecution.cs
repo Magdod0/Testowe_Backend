@@ -20,7 +20,9 @@ namespace Testowe_Backend_Client.Common
         //public abstract void Execute();
         protected bool TrySafeCall<TResult>(Func<TResult> action, out TResult result)
         {
+#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             result = default(TResult);
+#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             try
             {
                 result = action();
@@ -33,7 +35,9 @@ namespace Testowe_Backend_Client.Common
         }
         protected bool TrySafeCall<TResult, TEntity>(Func<TResult, TEntity> action, TResult sample, out TEntity result)
         {
+#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             result = default(TEntity);
+#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             try
             {
                 result = action(sample);
